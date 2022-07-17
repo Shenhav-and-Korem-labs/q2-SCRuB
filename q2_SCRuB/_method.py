@@ -1,6 +1,7 @@
 import os
 import tempfile
 import subprocess
+import numpy as np
 import pandas as pd
 from qiime2 import Metadata
 
@@ -19,6 +20,7 @@ def run_commands(cmds, verbose=True):
               "no longer exist.")
     print(cmds)
     for cmd in cmds:
+        print(cmd)
         if verbose:
             print("\nCommand:", end=' ')
             print(" ".join(cmd), end='\n\n')
@@ -31,7 +33,6 @@ def scrub_format(meta: pd.DataFrame,
                  well_location_column: str) -> pd.DataFrame:
     """
     Helper function to format metadata for SCRuB.
-    
     """
     cols=[control_idx_column, sample_type_column] 
     if type(well_location_column)==str:
@@ -40,13 +41,14 @@ def scrub_format(meta: pd.DataFrame,
     return( meta[cols] )
 
 
-def run_scrub(table: pd.DataFrame,
-              metadata: Metadata,
-              control_idx_column: str,
-              sample_type_column: str,
-              well_location_column: str,
-              control_order: list ) -> pd.DataFrame:
+def SCRuB(table: pd.DataFrame,
+          metadata: Metadata,
+          control_idx_column: str,
+          sample_type_column: str,
+          well_location_column: str,
+          control_order: list ) -> pd.DataFrame:
 
+    print('Starting to run SCRuB on Qiime2!')
     cols=[control_idx_column, sample_type_column] 
     if type(well_location_column)==str:
         cols+= [well_location_column]
@@ -71,14 +73,14 @@ def run_scrub(table: pd.DataFrame,
 
     # filter the metadata & table so they are matched
     table = table.T
-    shared_index = list(set(table.columns) & set(scrub_meta.index))
-    scrub_meta = scrub_meta.reindex(shared_index)
-    table = table.loc[:, shared_index]
-
-    scrub_order=[ ','.join(control_order) if type(control_order)==list
-                 else control_order if type(control_order)==str else
-                 'NA'][0]
+#     shared_index = list(set(table.columns) & set(scrub_meta.index))
+#     scrub_meta = scrub_meta.reindex(shared_index)
+#     table = table.loc[:, shared_index]
     
+    scrub_order=[ ','.join([ a.replace(',', '_') for a in control_order ]) if type(control_order) in [list, np.ndarray]
+                 else control_order.replace(',', '_') if type(control_order)==str else
+                 'NA'][0]
+    print(scrub_order)
     scrub_meta = scrub_format(scrub_meta,
                               control_idx_column,
                               sample_type_column,
@@ -102,17 +104,17 @@ def run_scrub(table: pd.DataFrame,
         scrub_meta.to_csv('tmp_metadadz.csv', header=True)
 
         # build command for SCRuB
-        cmd = ['Rscript',
+        cmd = [ 'Rscript', #Documents/sandbox/q2-SCRuB/q2_SCRuB/assets/
               'run_SCRuB.R',
-               biom_fp,
-               map_fp,
-               scrub_order,
-               summary_fp]
-        cmd = list(map(str, cmd))
+               '--samples_counts_path', biom_fp,
+               '--sample_metadata_path', map_fp,
+               '--control_order', scrub_order,
+               '--output_path', summary_fp]
 
         try:
             run_commands([cmd])
         except subprocess.CalledProcessError as e:
+            print(e)
             raise Exception("An error was encountered while running SCRuB"
                             " in R (return code %d), please inspect stdout"
                             " and stderr to learn more." % e.returncode)

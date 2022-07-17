@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
-library(devtools)
-devtools::install('../../../SCRuB')
+# library(devtools)
+# devtools::install('../../../SCRuB')
 
 ###################################################
 # This R script takes an input directory of .csv files outlining samples' count-based abundances and metadata
@@ -16,12 +16,11 @@ devtools::install('../../../SCRuB')
 # NOTE: All numeric arguments should be zero or positive.
 # NOTE: All numeric arguments save maxEE are expected to be integers.
 #
-
+# 
 library("optparse")
 
 cat(R.version$version.string, "\n")
-errQuit <- function(mesg, status=1) { message("Error: ", mesg); q(status=status) }
-getN <- function(x) sum(getUniques(x)) #Function added from paired read processing
+# errQuit <- function(mesg, status=1) { message("Error: ", mesg); q(status=status) }
 
 option_list = list(
   make_option(c("--samples_counts_path"), action="store", default='NULL', type='character',
@@ -32,11 +31,9 @@ option_list = list(
               help="the order in which control types should be used for contamination removal. Should be inpuuted as a comma-separated list, i.e. 'control blank library prep,control blank extraction control'"),
   make_option(c("--output_path"), action="store", default='NULL', type='character',
               help="File path to store output csv file. If already exists, will be overwritten")
-)
-  
-  
-opt = parse_args(OptionParser(option_list=option_list))
+            )
 
+opt <- parse_args(OptionParser(option_list=option_list))
 
 # Assign each of the arguments, in positional order, to an appropriately named R variable
 inp.samps <- opt$samples_counts_path
@@ -44,13 +41,10 @@ inp.metadata <- opt$sample_metadata_path
 cont_order <- opt$control_order
 if(cont_order=='NA')cont_order <- NA
 out.path <- opt$output_path
-
-
 ### VALIDATE ARGUMENTS ###
 # Input directory is expected to contain .fastq.gz file(s)
 # that have not yet been filtered and globally trimmed
 # to the same length.
-
 if(!file.exists(inp.samps)) {
   errQuit("Input sample file does not exist!")
 } else {
@@ -58,7 +52,6 @@ if(!file.exists(inp.samps)) {
     errQuit("Input metadata file does not exist!")
   }
 }
-
 # Output files are to be filenames (not directories) and are to be
 # removed and replaced if already present.
 for(fn in c(out.path)) {
@@ -69,25 +62,27 @@ for(fn in c(out.path)) {
   }
 }
 
-### LOAD LIBRARIES ###
+  
+  # write.csv(data.frame(c(1:3), c(1:3)), opt$output_path)
+  # q(status=0)
+  
+## LOAD LIBRARIES ###
 suppressWarnings(library(SCRuB))
 suppressWarnings(library(stringr))
 suppressWarnings(library(dplyr))
 suppressWarnings(library(rlang))
 cat("SCRuB:", as.character(packageVersion("SCRuB")), "\n")
-
 cat("1) Loading datas\n")
   samples <- read.csv(inp.samps, row.names=1) %>% as.matrix()
   metadata <- read.csv(inp.metadata, row.names=1)
   control_order <- str_split(cont_order, ',')[[1]]
-
 ### DECONTAMINATE ###
 cat("2) Decontaminating ")
 scr_out <- SCRuB(samples, metadata, control_order)
-
 ### WRITE OUTPUT AND QUIT ###
 # Formatting as csv plain-text sequence table
 cat("3) Write output\n")
 write.csv(scr_out$decontaminated_samples, out.path)
-
 q(status=0)
+
+
