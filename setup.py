@@ -24,7 +24,7 @@ setup(
     scripts=['q2_SCRuB/assets/run_SCRuB.R'],
     package_data={
         "q2_SCRuB": ['citations.bib'],
-	'q2_SCRuB.tests': 'data/*'
+	'q2_SCRuB.tests': ['data/*']
     },
     zip_safe=False,
 )
