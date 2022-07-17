@@ -104,7 +104,7 @@ def SCRuB(table: pd.DataFrame,
         scrub_meta.to_csv('tmp_metadadz.csv', header=True)
 
         # build command for SCRuB
-        cmd = [ 'Rscript', #Documents/sandbox/q2-SCRuB/q2_SCRuB/assets/
+        cmd = [ #'Rscript', #Documents/sandbox/q2-SCRuB/q2_SCRuB/assets/
               'run_SCRuB.R',
                '--samples_counts_path', biom_fp,
                '--sample_metadata_path', map_fp,
