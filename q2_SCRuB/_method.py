@@ -47,6 +47,12 @@ def SCRuB(table: pd.DataFrame,
           sample_type_column: str,
           well_location_column: str,
           control_order: list ) -> pd.DataFrame:
+    
+    # read from table csvs if paths are provided
+    if type(table)==str:
+        table=pd.read_csv(table, index_col=0)
+    if type(metadata)==str:
+        metadata=Metadata( pd.read_csv(metadata, index_col=0) )
 
     print('Starting to run SCRuB on Qiime2!')
     cols=[control_idx_column, sample_type_column] 
@@ -68,11 +74,9 @@ def SCRuB(table: pd.DataFrame,
                          ' the input columns are in the given metdata.')
 
     # keep only those columns
-    scrub_meta = metadata.dropna(subset=cols)
-    scrub_meta = scrub_meta.loc[:, cols]
+    scrub_meta = metadata.dropna(subset=cols).loc[:, cols]
 
     # filter the metadata & table so they are matched
-    table = table.T
 #     shared_index = list(set(table.columns) & set(scrub_meta.index))
 #     scrub_meta = scrub_meta.reindex(shared_index)
 #     table = table.loc[:, shared_index]
@@ -97,15 +101,13 @@ def SCRuB(table: pd.DataFrame,
         # Need to manually specify header=True for Series (i.e. "meta"). It's
         # already the default for DataFrames (i.e. "table"), but we manually
         # specify it here anyway to alleviate any potential confusion.
-        table.T.to_csv(biom_fp, header=True)
+        table.to_csv(biom_fp, header=True)
         scrub_meta.to_csv(map_fp, header=True)
-        
-        table.T.to_csv('tmp_smpz.csv', header=True)
-        scrub_meta.to_csv('tmp_metadadz.csv', header=True)
+
 
         # build command for SCRuB
-        cmd = [ #'Rscript', #Documents/sandbox/q2-SCRuB/q2_SCRuB/assets/
-              'run_SCRuB.R',
+        cmd = [
+               'run_SCRuB.R',
                '--samples_counts_path', biom_fp,
                '--sample_metadata_path', map_fp,
                '--control_order', scrub_order,
@@ -119,7 +121,7 @@ def SCRuB(table: pd.DataFrame,
                             " in R (return code %d), please inspect stdout"
                             " and stderr to learn more." % e.returncode)
 
-        # if run was sucessfull import the data and return
+        # if run was sucessful import the data and return
         scrubbed = pd.read_csv(summary_fp, index_col=0)
 
         return scrubbed

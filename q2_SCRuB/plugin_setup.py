@@ -1,4 +1,6 @@
 
+import numpy as np
+import pandas as pd
 import qiime2.sdk
 import qiime2.plugin
 from qiime2.plugin import (Int, Metadata,
@@ -16,7 +18,7 @@ from ._SCRuB_defaults import *
 # TODO: will need to fix the version number
 __version__ = '0.1.0'
 
-# perams types
+# param types
 PARAMETERS = {
                'table': pd.DataFrame,
               'metadata': Metadata,
