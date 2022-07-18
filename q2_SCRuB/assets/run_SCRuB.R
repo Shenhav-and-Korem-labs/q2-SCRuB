@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 ###################################################
 # This R script takes an input:
 #  1) a path to a .csv file outlining samples' count-based abundances 

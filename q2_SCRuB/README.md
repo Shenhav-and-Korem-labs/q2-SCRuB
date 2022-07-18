@@ -40,7 +40,7 @@ pip install git+https://github.com/korem-lab/q2-SCRuB.git
 
 # Tutorial 
 
-A QIIME2 demo notebook is available [here](https://github.com/korem-lab/q2-SCRuB/q2_SCRuB/tutorials/Demo-q2-SCRuB.ipynb)
+A QIIME2 demo notebook is available [here](https://github.com/korem-lab/q2-SCRuB/blob/master/q2_SCRuB/tutorials/Demo-q2-SCRuB.ipynb)
 
 ## Running q2-SCRuB
 
