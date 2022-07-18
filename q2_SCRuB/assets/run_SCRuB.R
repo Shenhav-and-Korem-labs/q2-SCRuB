@@ -1,26 +1,23 @@
-#!/usr/bin/env Rscript
-# library(devtools)
-# devtools::install('../../../SCRuB')
-
 ###################################################
-# This R script takes an input directory of .csv files outlining samples' count-based abundances and metadata
-# and outputs a tsv file of the dada2 processed sequence
-# table. It is intended for use with the QIIME2 plugin for SCRuB
+# This R script takes an input:
+#  1) a path to a .csv file outlining samples' count-based abundances 
+#  2) a path to a .csv file outlining samples' metadata and metadata
+#  3) a string outlining teh order the run decontaminations in 
+#  4) a path to which teh decontaminated sample file will be written
+# and write a csv file of the decontaminatied samples to the specified parth
+# It is intended for use with the QIIME2 plugin for SCRuB
 #
-
 ####################################################
 
 ####################################################
 #             DESCRIPTION OF ARGUMENTS             #
 ####################################################
-# NOTE: All numeric arguments should be zero or positive.
-# NOTE: All numeric arguments save maxEE are expected to be integers.
 #
 # 
 library("optparse")
 
 cat(R.version$version.string, "\n")
-# errQuit <- function(mesg, status=1) { message("Error: ", mesg); q(status=status) }
+errQuit <- function(mesg, status=1) { message("Error: ", mesg); q(status=status) }
 
 option_list = list(
   make_option(c("--samples_counts_path"), action="store", default='NULL', type='character',
@@ -62,10 +59,6 @@ for(fn in c(out.path)) {
   }
 }
 
-  
-  # write.csv(data.frame(c(1:3), c(1:3)), opt$output_path)
-  # q(status=0)
-  
 ## LOAD LIBRARIES ###
 suppressWarnings(library(SCRuB))
 suppressWarnings(library(stringr))
@@ -77,7 +70,7 @@ cat("1) Loading datas\n")
   metadata <- read.csv(inp.metadata, row.names=1)
   control_order <- str_split(cont_order, ',')[[1]]
 ### DECONTAMINATE ###
-cat("2) Decontaminating ")
+cat("2) Decontaminating \n")
 scr_out <- SCRuB(samples, metadata, control_order)
 ### WRITE OUTPUT AND QUIT ###
 # Formatting as csv plain-text sequence table

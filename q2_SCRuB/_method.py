@@ -18,9 +18,7 @@ def run_commands(cmds, verbose=True):
         print("The command(s) being run are below. These commands cannot "
               "be manually re-run as they will depend on temporary files that "
               "no longer exist.")
-    print(cmds)
     for cmd in cmds:
-        print(cmd)
         if verbose:
             print("\nCommand:", end=' ')
             print(" ".join(cmd), end='\n\n')
@@ -54,7 +52,7 @@ def SCRuB(table: pd.DataFrame,
     if type(metadata)==str:
         metadata=Metadata( pd.read_csv(metadata, index_col=0) )
 
-    print('Starting to run SCRuB on Qiime2!')
+    print('Running SCRuB on Qiime2!')
     cols=[control_idx_column, sample_type_column] 
     if type(well_location_column)==str:
         cols+= [well_location_column]
@@ -106,8 +104,7 @@ def SCRuB(table: pd.DataFrame,
 
 
         # build command for SCRuB
-        cmd = [
-               'run_SCRuB.R',
+        cmd = ['run_SCRuB.R',
                '--samples_counts_path', biom_fp,
                '--sample_metadata_path', map_fp,
                '--control_order', scrub_order,
