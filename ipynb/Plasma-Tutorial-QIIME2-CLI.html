@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plasma-Tutorial-QIIME2-API</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Plasma-Tutorial-QIIME2-CLI</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14600,37 +14600,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>First, we will make a tutorial directory and download the data above and move the files to the <code>plasma-data</code> directory:</p>
 <div class="highlight"><pre><span></span>mkdir plasma-data
 </pre></div>
-<p>First we will import our data with the QIIME2 Python API.</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">qiime2</span> <span class="k">as</span> <span class="nn">q2</span>
-<span class="c1"># hide pandas Future/Deprecation Warning(s) for tutorial</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span> 
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
-
-<span class="c1"># import table</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">q2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;plasma-data/table.qza&#39;</span><span class="p">)</span>\
-<span class="c1"># import metadata</span>
-<span class="n">metadata</span> <span class="o">=</span> <span class="n">q2</span><span class="o">.</span><span class="n">Metadata</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;plasma-data/metadata.tsv&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14638,35 +14611,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next, we will demonstrate how to run SCRuB on this dataset. First, we will explore the required samples and metadata for SCRuB:</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2.plugins.SCRuB.methods</span> <span class="kn">import</span> <span class="n">SCRuB</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>To run SCRuB we only need to run the one single command. The inputs are:</p>
+<p>To run SCRuB we only need one single command. The inputs are:</p>
 <ol>
 <li><code>table</code><ul>
 <li>The table is of type <code>FeatureTable[Frequency]</code> which is a table where the rows are features (e.g. ASVs/microbes), the columns are samples, and the entries are the number of sequences for each sample-feature pair.</li>
@@ -14704,20 +14649,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">scrubbed</span> <span class="o">=</span> <span class="n">SCRuB</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> 
-                 <span class="n">metadata</span><span class="p">,</span> 
-                <span class="s1">&#39;is_control&#39;</span><span class="p">,</span> <span class="c1"># specifies metadata column where True denotes the negative controls</span>
-                <span class="s1">&#39;sample_type&#39;</span><span class="p">,</span> <span class="c1"># specifies metadata column denoting the sample type</span>
-                <span class="s1">&#39;well_id&#39;</span> <span class="c1"># specifies metadata column representing samples location, in &#39;A11&#39;,&#39;B10&#39; format</span>
-                <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>qiime SCRuB SCRuB <span class="se">\\</span>
+    <span class="o">--</span><span class="n">i</span><span class="o">-</span><span class="n">table</span> <span class="n">plasma</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">table</span><span class="o">.</span><span class="n">qza</span> \\
+    <span class="o">--</span><span class="n">m</span><span class="o">-</span><span class="n">metadata</span><span class="o">-</span><span class="n">file</span> <span class="n">plasma</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">metadata</span><span class="o">.</span><span class="n">tsv</span> \\
+    <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">idx</span><span class="o">-</span><span class="n">column</span> <span class="n">is_control</span> \\
+    <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">column</span> <span class="n">sample_type</span> \\
+    <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">well</span><span class="o">-</span><span class="n">location</span><span class="o">-</span><span class="n">column</span> <span class="n">well_id</span> \\
+    <span class="o">--</span><span class="n">p</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">order</span> <span class="n">NA</span> \\
+    <span class="o">--</span><span class="n">o</span><span class="o">-</span><span class="n">scrubbed</span> <span class="n">results</span><span class="o">/</span><span class="n">scrubbed</span><span class="o">.</span><span class="n">qza</span>
 </pre></div>
 
      </div>
@@ -14725,103 +14672,44 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we can compare the raw table and SCRuB's output:</p>
 
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Running SCRuB on Qiime2!
-Running external command line application(s). This may print messages to stdout and/or stderr.
-The command(s) being run are below. These commands cannot be manually re-run as they will depend on temporary files that no longer exist.
-
-Command: run_SCRuB.R --samples_counts_path /var/folders/60/0byq_5yx2jbgs0cn6s5s2y7r0000gn/T/tmp7g2l80i2/samples.csv --sample_metadata_path /var/folders/60/0byq_5yx2jbgs0cn6s5s2y7r0000gn/T/tmp7g2l80i2/metadata.csv --control_order NA --output_path /var/folders/60/0byq_5yx2jbgs0cn6s5s2y7r0000gn/T/tmp7g2l80i2/scrubbed.csv
-
-R version 4.1.3 (2022-03-10) 
-</pre>
 </div>
 </div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">qiime2</span> <span class="k">as</span> <span class="nn">q2</span>
+<span class="c1"># hide pandas Future/Deprecation Warning(s) for tutorial</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
 
-<div class="jp-OutputArea-child">
+<span class="c1"># import table</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">q2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;plasma-data/table.qza&#39;</span><span class="p">)</span>\
+<span class="c1"># import metadata</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">q2</span><span class="o">.</span><span class="n">Metadata</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;plasma-data/metadata.tsv&#39;</span><span class="p">)</span>
+<span class="c1"># import SCRuB output</span>
+<span class="n">scrubbed</span> <span class="o">=</span> <span class="n">q2</span><span class="o">.</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;results/scrubbed.qza&#39;</span><span class="p">)</span>
+</pre></div>
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Loading required package: torch
-Loading required package: glmnet
-Loading required package: Matrix
-Loaded glmnet 4.1-4
-Loading required package: tidyverse
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-✔ tibble  3.1.7     ✔ dplyr   1.0.9
-✔ tidyr   1.2.0     ✔ stringr 1.4.0
-✔ readr   2.1.2     ✔ forcats 0.5.1
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ tidyr::expand() masks Matrix::expand()
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-✖ tidyr::pack()   masks Matrix::pack()
-✖ tidyr::unpack() masks Matrix::unpack()
-Loading required package: magrittr
-
-Attaching package: ‘magrittr’
-
-The following object is masked from ‘package:purrr’:
-
-    set_names
-
-The following object is masked from ‘package:tidyr’:
-
-    extract
-
-Loading required package: rlang
-
-Attaching package: ‘rlang’
-
-The following object is masked from ‘package:magrittr’:
-
-    set_names
-
-The following objects are masked from ‘package:purrr’:
-
-    %@%, as_function, flatten, flatten_chr, flatten_dbl, flatten_int,
-    flatten_lgl, flatten_raw, invoke, splice
-
-</pre>
+     </div>
 </div>
 </div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>SCRuB: 0.0.1 
-1) Loading datas
-2) Decontaminating 
-[1] &#34;Incorporating the well metadata to track well-to-well leakage!&#34;
-[1] &#34;SCRuBbing away contamination in the control blank DNA extraction controls...&#34;
-[1] &#34;SCRuBbing away contamination in the control blank library prep controls...&#34;
-3) Write output
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14829,7 +14717,7 @@ The following objects are masked from ‘package:purrr’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">qiime2.plugins.deicode.actions</span> <span class="kn">import</span> <span class="n">rpca</span>
@@ -14846,7 +14734,7 @@ The following objects are masked from ‘package:purrr’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run RPCA and plot with emperor</span>
@@ -14876,7 +14764,7 @@ The following objects are masked from ‘package:purrr’:
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
 
@@ -14921,11 +14809,11 @@ The following objects are masked from ‘package:purrr’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run RPCA and plot with emperor</span>
-<span class="n">rpca_biplot</span><span class="p">,</span> <span class="n">rpca_distance</span> <span class="o">=</span> <span class="n">rpca</span><span class="p">(</span><span class="n">scrubbed</span><span class="o">.</span><span class="n">scrubbed</span><span class="p">)</span>
+<span class="n">rpca_biplot</span><span class="p">,</span> <span class="n">rpca_distance</span> <span class="o">=</span> <span class="n">rpca</span><span class="p">(</span><span class="n">scrubbed</span><span class="p">)</span>
 <span class="n">rpca_biplot_emperor</span> <span class="o">=</span> <span class="n">biplot</span><span class="p">(</span><span class="n">rpca_biplot</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
 
 <span class="c1"># save the plots</span>
@@ -14947,7 +14835,7 @@ The following objects are masked from ‘package:purrr’:
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
 
 
