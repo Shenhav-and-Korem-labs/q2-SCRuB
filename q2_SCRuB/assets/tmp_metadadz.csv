@@ -1,0 +1,382 @@
+,is_control,sample_type,sample_well
+12691.Control.23,0.0,plasma,P4
+12691.Control.54,0.0,bacteria monoculture,M1
+12691.Control.28,0.0,plasma,A12
+12667.X2069204,0.0,plasma,G10
+12692.150182,0.0,plasma,P16
+12667.X3130165,0.0,plasma,F10
+12667.X2064845,0.0,plasma,E23
+12667.X2055863,0.0,plasma,G9
+12667.Control.27,0.0,plasma,H8
+12667.X2060824,0.0,plasma,I15
+12691.Control.76,0.0,bacteria monoculture,F1
+12691.PC07,0.0,plasma,E11
+12667.Control.89,1.0,control blank library prep,C11
+12692.150229,0.0,plasma,N22
+12667.X3055778,0.0,plasma,B21
+12692.Control.15,0.0,plasma,L4
+12667.X3028572,0.0,plasma,I24
+12691.Control.93,1.0,control blank library prep,H24
+12691.Control.63,1.0,control blank DNA extraction,H3
+12667.X2056691,0.0,plasma,E6
+12667.X3095786,0.0,plasma,H21
+12667.X2071711,0.0,plasma,C6
+12667.X2454843,0.0,plasma,D15
+12667.X2330723,0.0,plasma,O16
+12692.150215,0.0,plasma,P22
+12691.Control.12,0.0,plasma,K3
+12667.X2076870,0.0,plasma,F5
+12667.X3095966,0.0,plasma,H10
+12667.X2068928,0.0,plasma,G23
+12691.PC55,0.0,plasma,B6
+12667.X2051138,0.0,plasma,G17
+12667.X3015659,0.0,plasma,M16
+12667.X3122336,0.0,plasma,D6
+12692.150108,0.0,plasma,B20
+12667.X3018928,0.0,plasma,A20
+12667.Control.82,0.0,bacteria monoculture,D2
+12667.Control.60,1.0,control blank DNA extraction,G4
+12667.X3073917,0.0,plasma,F13
+12667.X3040805,0.0,plasma,N15
+12667.X2454595,0.0,plasma,N5
+12667.Control.4,1.0,control blank DNA extraction,B4
+12667.Control.6,0.0,plasma,P12
+12667.X2051273,0.0,plasma,M5
+12667.X2130028,0.0,plasma,B9
+12692.Control.64,1.0,control blank DNA extraction,D4
+12667.X2036767,0.0,plasma,E5
+12667.X3039490,0.0,plasma,E19
+12667.X2073324,0.0,plasma,E21
+12691.PC13,0.0,plasma,K17
+12692.Control.92,1.0,control blank library prep,F24
+12692.Control.49,0.0,bacteria monoculture,C1
+12691.PC54,0.0,plasma,P23
+12691.PC60,0.0,plasma,P10
+12667.X2342267,0.0,plasma,A16
+12691.PC04,0.0,plasma,K7
+12692.150178,0.0,plasma,H22
+12667.X2170593,0.0,plasma,L11
+12667.X2061574,0.0,plasma,O8
+12691.PC46,0.0,plasma,P13
+12691.Control.77,0.0,bacteria monoculture,H1
+12667.X2076970,0.0,plasma,M18
+12667.X3062186,0.0,plasma,B19
+12692.150007,0.0,plasma,J14
+12667.X3079141,0.0,plasma,M24
+12691.Control.78,0.0,bacteria monoculture,J1
+12691.PC27,0.0,plasma,I14
+12691.PC25,0.0,plasma,E12
+12667.X2067131,0.0,plasma,I18
+12691.PC02,0.0,plasma,I5
+12667.X2069281,0.0,plasma,A24
+12692.Control.45,1.0,control blank library prep,O2
+12667.X2171346,0.0,plasma,O18
+12692.Control.25,0.0,plasma,G8
+12692.Control.79,0.0,bacteria monoculture,L1
+12667.Control.69,0.0,bacteria monoculture,E2
+12667.X3040432,0.0,plasma,D13
+12667.X3042110,0.0,plasma,M23
+12691.Control.95,1.0,control blank library prep,L24
+12691.Control.53,0.0,bacteria monoculture,K1
+12667.Control.32,0.0,plasma,L13
+12667.X2036793,0.0,plasma,C5
+12667.X3023585,0.0,plasma,N17
+12667.X2109273,0.0,plasma,A22
+12667.Control.59,1.0,control blank DNA extraction,E4
+12667.X2483184,0.0,plasma,F6
+12667.X3099893,0.0,plasma,L10
+12692.Control.55,1.0,control blank DNA extraction,C3
+12667.X2068905,0.0,plasma,C13
+12691.Control.74,0.0,bacteria monoculture,B1
+12667.X3054480,0.0,plasma,D21
+12667.X2339235,0.0,plasma,G12
+12691.Control.50,0.0,bacteria monoculture,E1
+12692.150093,0.0,plasma,L18
+12667.X3096432,0.0,plasma,J23
+12667.X2049520,0.0,plasma,M7
+12692.150031,0.0,plasma,B18
+12667.X2488000,0.0,plasma,P8
+12692.150199,0.0,plasma,H18
+12691.PC28,0.0,plasma,O14
+12667.X2050079,0.0,plasma,I17
+12667.X2457964,0.0,plasma,H17
+12691.PC33,0.0,plasma,O20
+12667.Control.14,0.0,plasma,L3
+12667.X3003105,0.0,plasma,J17
+12692.Control.30,0.0,plasma,B12
+12691.PC37,0.0,plasma,B5
+12691.Control.38,0.0,plasma,C12
+12667.X3106774,0.0,plasma,N21
+12691.PC11,0.0,plasma,G15
+12667.X3019107,0.0,plasma,P11
+12667.X2060511,0.0,plasma,E13
+12692.Control.84,0.0,bacteria monoculture,H2
+12691.PC52,0.0,plasma,L21
+12667.X2065210,0.0,plasma,K20
+12692.150003,0.0,plasma,H14
+12667.X2066035,0.0,plasma,G21
+12667.X3109641,0.0,plasma,B10
+12691.PC36,0.0,plasma,O24
+12691.PC19,0.0,plasma,A6
+12692.150171,0.0,plasma,F22
+12667.X3091374,0.0,plasma,N9
+12667.X3074128,0.0,plasma,N6
+12667.X3008459,0.0,plasma,L15
+12667.X3092766,0.0,plasma,H13
+12667.X3124209,0.0,plasma,N10
+12692.Control.19,0.0,plasma,N4
+12691.PC45,0.0,plasma,J13
+12691.PC22,0.0,plasma,K8
+12691.PC42,0.0,plasma,P9
+12692.150117,0.0,plasma,F16
+12667.X2070791,0.0,plasma,E10
+12667.X2059598,0.0,plasma,O11
+12691.Control.39,0.0,plasma,D11
+12692.150141,0.0,plasma,N18
+12667.X3037415,0.0,plasma,A17
+12667.X2047268,0.0,plasma,I11
+12692.Control.85,0.0,bacteria monoculture,J2
+12667.X3090565,0.0,plasma,D19
+12667.X3024195,0.0,plasma,B7
+12667.X2052632,0.0,plasma,K19
+12667.X3124859,0.0,plasma,N8
+12667.X2064759,0.0,plasma,C19
+12692.150104,0.0,plasma,P14
+12691.Control.96,1.0,control blank library prep,N24
+12691.PC17,0.0,plasma,C23
+12667.X3109548,0.0,plasma,D8
+12691.PC20,0.0,plasma,I6
+12667.X2076954,0.0,plasma,H5
+12667.X3030973,0.0,plasma,H11
+12667.X3034380,0.0,plasma,P17
+12691.PC12,0.0,plasma,C17
+12667.X3004746,0.0,plasma,N7
+12667.Control.68,0.0,bacteria monoculture,C2
+12667.X3109592,0.0,plasma,P6
+12667.X2052566,0.0,plasma,K9
+12667.Control.2,1.0,control blank DNA extraction,A4
+12692.Control.36,0.0,plasma,J7
+12667.X2058733,0.0,plasma,A23
+12667.X3122400,0.0,plasma,J10
+12692.150242,0.0,plasma,D24
+12692.Control.22,0.0,plasma,P3
+12692.Control.81,0.0,bacteria monoculture,B2
+12667.Control.65,1.0,control blank DNA extraction,F4
+12667.X2041787,0.0,plasma,O7
+12667.Control.91,1.0,control blank library prep,M13
+12691.PC21,0.0,plasma,E8
+12667.X3030817,0.0,plasma,L9
+12667.X2066114,0.0,plasma,K23
+12667.X3012989,0.0,plasma,G13
+12692.150146,0.0,plasma,J20
+12667.X2048152,0.0,plasma,E15
+12667.X2051123,0.0,plasma,C15
+12667.Control.88,1.0,control blank library prep,A11
+12667.X2070621,0.0,plasma,C7
+12667.X2488349,0.0,plasma,M22
+12691.PC30,0.0,plasma,C18
+12667.X2061208,0.0,plasma,A10
+12667.X3076646,0.0,plasma,J19
+12667.X2480300,0.0,plasma,M9
+12692.Control.33,0.0,plasma,H12
+12667.X2470952,0.0,plasma,L19
+12667.X2403412,0.0,plasma,J11
+12667.X2454883,0.0,plasma,I10
+12667.Control.97,1.0,control blank library prep,P24
+12667.X3054832,0.0,plasma,H6
+12691.PC59,0.0,plasma,D10
+12691.PC23,0.0,plasma,C10
+12667.Control.47,1.0,control blank library prep,P2
+12667.X2403373,0.0,plasma,C20
+12667.X2489136,0.0,plasma,B13
+12692.150126,0.0,plasma,F20
+12692.150083,0.0,plasma,J18
+12667.X2073298,0.0,plasma,E14
+12667.Control.43,0.0,plasma,J12
+12667.X2062843,0.0,plasma,I12
+12691.PC31,0.0,plasma,K18
+12691.PC26,0.0,plasma,M12
+12692.150143,0.0,plasma,H20
+12667.X3064282,0.0,plasma,H23
+12667.X2062809,0.0,plasma,I19
+12692.150095,0.0,plasma,P18
+12667.X3064254,0.0,plasma,E20
+12692.Control.80,0.0,bacteria monoculture,N1
+12692.Control.37,0.0,plasma,J8
+12667.X2073293,0.0,plasma,I16
+12667.X3043708,0.0,plasma,M10
+12692.Control.58,1.0,control blank DNA extraction,C4
+12667.X2055755,0.0,plasma,O21
+12667.X2069618,0.0,plasma,A14
+12691.PC24,0.0,plasma,O10
+12667.X2060998,0.0,plasma,G6
+12692.150088,0.0,plasma,D16
+12667.X3062808,0.0,plasma,A18
+12667.X2064367,0.0,plasma,E16
+12691.Control.40,0.0,plasma,D12
+12692.150238,0.0,plasma,B24
+12667.X3023798,0.0,plasma,E22
+12692.Control.57,1.0,control blank DNA extraction,G3
+12692.150166,0.0,plasma,D22
+12691.PC09,0.0,plasma,I13
+12692.Control.29,0.0,plasma,B11
+12667.X2068956,0.0,plasma,M6
+12667.X2491176,0.0,plasma,C14
+12667.X3097243,0.0,plasma,B8
+12692.Control.61,1.0,control blank DNA extraction,D3
+12691.PC51,0.0,plasma,P19
+12692.Control.94,1.0,control blank library prep,J24
+12667.X3071967,0.0,plasma,I22
+12692.Control.41,0.0,plasma,M14
+12691.Control.7,0.0,plasma,B14
+12667.X2450452,0.0,plasma,I23
+12667.Control.90,1.0,control blank library prep,K13
+12692.150094,0.0,plasma,N14
+12691.PC06,0.0,plasma,O9
+12691.PC48,0.0,plasma,D17
+12691.PC10,0.0,plasma,O13
+12667.X2070873,0.0,plasma,K10
+12691.PC29,0.0,plasma,G16
+12692.Control.86,0.0,bacteria monoculture,L2
+12692.150005,0.0,plasma,L14
+12667.X2066293,0.0,plasma,I9
+12691.PC34,0.0,plasma,K22
+12692.Control.31,0.0,plasma,K14
+12692.150013,0.0,plasma,L16
+12667.X2043129,0.0,plasma,G5
+12691.PC39,0.0,plasma,F7
+12691.Control.5,0.0,plasma,N12
+12667.X2070271,0.0,plasma,A19
+12667.X2496221,0.0,plasma,F15
+12667.X3056486,0.0,plasma,B15
+12692.150156,0.0,plasma,L20
+12692.Control.67,0.0,bacteria monoculture,A2
+12667.X3001839,0.0,plasma,F9
+12667.X2147547,0.0,plasma,P7
+12667.X2068980,0.0,plasma,O22
+12667.X3021397,0.0,plasma,J15
+12692.150032,0.0,plasma,H16
+12692.150006,0.0,plasma,B16
+12667.X2068760,0.0,plasma,M20
+12692.Control.20,0.0,plasma,O3
+12667.X3039009,0.0,plasma,B23
+12667.X3088501,0.0,plasma,F21
+12691.PC16,0.0,plasma,K21
+12667.X2105130,0.0,plasma,K16
+12667.X2062971,0.0,plasma,C16
+12692.150080,0.0,plasma,D18
+12667.X2064365,0.0,plasma,A21
+12692.Control.16,0.0,plasma,M3
+12667.X2068135,0.0,plasma,A8
+12667.X2061316,0.0,plasma,A15
+12667.X2058630,0.0,plasma,A13
+12692.Control.75,0.0,bacteria monoculture,D1
+12691.PC01,0.0,plasma,A5
+12667.X2472337,0.0,plasma,I20
+12692.150161,0.0,plasma,N20
+12667.X2055743,0.0,plasma,E9
+12667.X2062715,0.0,plasma,O5
+12691.PC40,0.0,plasma,L7
+12667.X2472497,0.0,plasma,H9
+12692.Control.1,1.0,control blank DNA extraction,A3
+12692.Control.24,0.0,plasma,G7
+12692.Control.13,0.0,plasma,K4
+12692.Control.42,0.0,plasma,N13
+12667.X2060655,0.0,plasma,K15
+12692.150113,0.0,plasma,D20
+12691.Control.48,0.0,bacteria monoculture,A1
+12691.PC08,0.0,plasma,M11
+12667.Control.56,1.0,control blank DNA extraction,E3
+12667.Control.8,0.0,plasma,I3
+12692.150163,0.0,plasma,B22
+12692.Control.34,0.0,plasma,I7
+12667.X3053590,0.0,plasma,G14
+12667.X2471017,0.0,plasma,P21
+12667.X3038783,0.0,plasma,J9
+12667.X3097041,0.0,plasma,N23
+12667.X3090550,0.0,plasma,D7
+12667.X2052835,0.0,plasma,M19
+12667.X2471544,0.0,plasma,G22
+12691.Control.62,1.0,control blank DNA extraction,F3
+12692.150162,0.0,plasma,P20
+12667.X2071659,0.0,plasma,O12
+12692.150022,0.0,plasma,N16
+12692.Control.46,1.0,control blank library prep,P1
+12667.X2062504,0.0,plasma,M17
+12667.Control.83,0.0,bacteria monoculture,F2
+12691.PC03,0.0,plasma,E7
+12667.X2067157,0.0,plasma,C21
+12691.PC15,0.0,plasma,O19
+12667.X2488384,0.0,plasma,E24
+12667.X2037715,0.0,plasma,A7
+12667.X2068559,0.0,plasma,M21
+12691.PC61,0.0,plasma,F12
+12667.X3096081,0.0,plasma,J21
+12667.X3074166,0.0,plasma,F17
+12691.PC35,0.0,plasma,C24
+12691.PC38,0.0,plasma,J5
+12667.X2062861,0.0,plasma,O15
+12667.Control.70,0.0,bacteria monoculture,G2
+12691.Control.87,0.0,bacteria monoculture,N2
+12691.Control.3,1.0,control blank DNA extraction,B3
+12691.Control.52,0.0,bacteria monoculture,I1
+12667.X3031283,0.0,plasma,P5
+12667.X2044156,0.0,plasma,K11
+12692.150109,0.0,plasma,F18
+12667.X2378267,0.0,plasma,E18
+12667.X2490051,0.0,plasma,L5
+12692.150011,0.0,plasma,J16
+12691.PC05,0.0,plasma,C9
+12691.PC50,0.0,plasma,H19
+12691.PC44,0.0,plasma,N11
+12667.Control.18,0.0,plasma,N3
+12691.PC43,0.0,plasma,F11
+12667.X2487909,0.0,plasma,K24
+12667.X2062564,0.0,plasma,O17
+12692.150230,0.0,plasma,F14
+12691.Control.21,0.0,plasma,O4
+12667.Control.51,0.0,bacteria monoculture,G1
+12691.PC41,0.0,plasma,D9
+12667.X3039831,0.0,plasma,I21
+12667.X3093550,0.0,plasma,B17
+12691.PC18,0.0,plasma,O23
+12667.X3081786,0.0,plasma,F23
+12691.Control.72,0.0,bacteria monoculture,K2
+12667.X2342424,0.0,plasma,C22
+12667.X3095232,0.0,plasma,F19
+12667.X2059586,0.0,plasma,G11
+12667.X2061359,0.0,plasma,E17
+12667.X2493385,0.0,plasma,D5
+12667.X2392039,0.0,plasma,G24
+12667.X2454540,0.0,plasma,O6
+12692.Control.17,0.0,plasma,M4
+12667.Control.71,0.0,bacteria monoculture,I2
+12691.Control.73,0.0,bacteria monoculture,M2
+12691.PC56,0.0,plasma,J6
+12667.Control.26,0.0,plasma,H7
+12692.150209,0.0,plasma,L22
+12667.X3034050,0.0,plasma,N19
+12667.X3097210,0.0,plasma,L23
+12667.X3121108,0.0,plasma,L6
+12667.X2065050,0.0,plasma,K6
+12667.X3043603,0.0,plasma,C8
+12667.X2043400,0.0,plasma,A9
+12691.Control.10,0.0,plasma,J3
+12692.150186,0.0,plasma,J22
+12691.Control.9,0.0,plasma,I4
+12692.Control.35,0.0,plasma,I8
+12691.PC47,0.0,plasma,H15
+12692.150224,0.0,plasma,D14
+12692.Control.11,0.0,plasma,J4
+12667.X3074050,0.0,plasma,P15
+12691.PC14,0.0,plasma,G19
+12691.Control.44,1.0,control blank library prep,O1
+12667.X2064352,0.0,plasma,G18
+12691.PC49,0.0,plasma,L17
+12667.X2069208,0.0,plasma,M15
+12667.X2050331,0.0,plasma,K5
+12667.X2062455,0.0,plasma,K12
+12691.Control.66,1.0,control blank DNA extraction,H4
+12667.X2074003,0.0,plasma,M8
+12691.PC32,0.0,plasma,G20
+12691.PC53,0.0,plasma,D23

@@ -4,7 +4,11 @@ import pandas as pd
 import qiime2.sdk
 import qiime2.plugin
 from qiime2.plugin import (Int, Metadata,
-                           Str, Bool)
+                           Str, Bool, List)
+
+from q2_types.sample_data import SampleData
+from q2_types.feature_data import FeatureData
+
 from q2_types.feature_table import (FeatureTable,
                                     Frequency,
                                     RelativeFrequency)
@@ -14,23 +18,29 @@ from q2_types.feature_data import (FeatureData,
 from ._method import SCRuB
 from ._SCRuB_defaults import *
 
+from qiime2.plugin import SemanticType
+from q2_types.sample_data import SampleData
+from q2_types.feature_data import FeatureData
 
 # TODO: will need to fix the version number
 __version__ = '0.1.0'
 
 # param types
 PARAMETERS = {
-               'table': pd.DataFrame,
+#                'table': FeatureTable[Frequency], #pd.DataFrame,
               'metadata': Metadata,
-              'control_idx_column': str,
-              'sample_type_column': str,
-              'well_location_column': str,
-              'control_order': list 
+              'control_idx_column': Str,
+              'sample_type_column': Str,
+              'well_location_column': Str,
+              'control_order': Str#List 
              }
 # perams descriptions
-PARAMETERDESC = {
-                  'table': DESC_TBL,
-                  'metadata': DESC_META,
+INPUTDESC = {
+              'table': DESC_TBL,
+#               'metadata': DESC_META
+            }
+
+PARAMETERDESC = {  'metadata': DESC_META,
                   'control_idx_column': DESC_CONTROL_COL,
                   'sample_type_column': DESC_SAMPLE_COL,
                   'well_location_column': DESC_WELL_COL,
@@ -45,20 +55,22 @@ plugin = qiime2.plugin.Plugin(
     version=__version__,
     website="https://github.com/korem-lab/SCRuB",
     citations=[citations['AustinSCRuB2022']],
-    short_description=('Plugin for SCRuB decontaminatoin'),
+    short_description=('Plugin for SCRuB decontamination'),
     description=('This is a QIIME 2 plugin supporting microbial'
                  ' decontamination through SCRuB.'),
     package='q2_SCRuB')
 
 plugin.methods.register_function(
     function=SCRuB,
-    inputs={'table': FeatureTable[Frequency]},
+    inputs={'table': FeatureTable[Frequency], 
+              #Metadata,
+           },
     parameters=PARAMETERS,
     outputs=[('scrubbed', FeatureTable[Frequency])],
-    input_descriptions={'table': DESC_TBL},
+    input_descriptions=INPUTDESC, #{'table': DESC_TBL},
     parameter_descriptions=PARAMETERDESC,
-    output_descriptions={'proportions': DESC_MP},
-    name='microbial source-tracking',
+    output_descriptions={'scrubbed': DESC_MP},
+    name='microbial decontamination',
     description=('SCRuB is a tool designed to help researchers address the common issue of contamination in microbial studies. This package provides an easy to use framework to apply SCRuB to your projects. All you need to get started are n samples x m taxa count matrices for both your samples and controls.'),
 )
 

@@ -3,7 +3,15 @@ import tempfile
 import subprocess
 import numpy as np
 import pandas as pd
+from pandas import DataFrame
 from qiime2 import Metadata
+from q2_types.feature_table import (FeatureTable,
+                                    Frequency,
+                                    RelativeFrequency)
+
+import ast
+import biom
+from biom import load_table
 
 
 def run_commands(cmds, verbose=True):
@@ -39,32 +47,62 @@ def scrub_format(meta: pd.DataFrame,
     return( meta[cols] )
 
 
-def SCRuB(table: pd.DataFrame,
-          metadata: Metadata,
-          control_idx_column: str,
-          sample_type_column: str,
-          well_location_column: str,
-          control_order: list ) -> pd.DataFrame:
-    
+def SCRuB(table: biom.Table, #pd.DataFrame,
+          metadata: DataFrame,# Metadata,
+          control_idx_column: str = None,
+          sample_type_column: str = 'sample_type',
+          well_location_column: str= 'well_id',
+          control_order: list= 'NA' ) -> pd.DataFrame:
+
     # read from table csvs if paths are provided
     if type(table)==str:
-        table=pd.read_csv(table, index_col=0)
+        if table[-4:]=='.biom':
+            table=load_table(table)
+        else:
+            table=pd.read_csv(table, index_col=0, sep='\t')
     if type(metadata)==str:
-        metadata=Metadata( pd.read_csv(metadata, index_col=0) )
-
+        metadata=Metadata( pd.read_csv(metadata, index_col=0, sep='\t') )
+    
     print('Running SCRuB on Qiime2!')
     cols=[control_idx_column, sample_type_column] 
     if type(well_location_column)==str:
         cols+= [well_location_column]
 
     # import and check all columns given are in dataframe
-    metadata = metadata.to_dataframe()
+    try:
+        metadata = metadata.to_dataframe()
+    except:
+        pass
+    
+    
+    try:
+        table = table.to_dataframe()
+    except:
+        pass
+    
+    is_inverted=False
+    if table.index.isin(metadata.index.values).mean() < table.columns.isin(metadata.index.values).mean():
+        table=table.T
+        is_inverted=True
+    
     # replace seperation character in metadata
     metadata = metadata.replace('_', '-',
                                 regex=True)
     metadata.index = metadata.index.astype(str)
     metadata.index = [ind.replace('_', '-')
                       for ind in metadata.index]
+    
+        
+    if control_idx_column is None:
+        control_idx_column='is_negative_control'
+        if 'empo_2' in metadata.columns:
+            metadata[control_idx_column] = metadata['empo_2'].str.lower().str.contains('negative')
+        elif 'qiita_empo_2' in metadata.columns:
+            metadata[control_idx_column] = metadata['qiita_empo_2'].str.lower().str.contains('negative')
+        except:
+            raise(ValueError('No control_idx_column specified, an no empo_2 column is provided to infer which samples are negative controls!'))
+    
+    
     # check columns are in metadata
     if not all([col_ in metadata.columns for col_ in cols]):
         raise ValueError('Not all columns given are present in the'
@@ -73,21 +111,26 @@ def SCRuB(table: pd.DataFrame,
 
     # keep only those columns
     scrub_meta = metadata.dropna(subset=cols).loc[:, cols]
-
-    # filter the metadata & table so they are matched
-#     shared_index = list(set(table.columns) & set(scrub_meta.index))
-#     scrub_meta = scrub_meta.reindex(shared_index)
-#     table = table.loc[:, shared_index]
+    
+    try:
+        scrub_order=ast.literal_eval(control_order)
+    except:
+        pass
     
     scrub_order=[ ','.join([ a.replace(',', '_') for a in control_order ]) if type(control_order) in [list, np.ndarray]
                  else control_order.replace(',', '_') if type(control_order)==str else
                  'NA'][0]
-    print(scrub_order)
+
     scrub_meta = scrub_format(scrub_meta,
                               control_idx_column,
                               sample_type_column,
                               well_location_column)
 
+    
+    # filter the metadata & table so they are matched
+    shared_index = list(set(table.index) & set(scrub_meta.index))
+    scrub_meta = scrub_meta.loc[shared_index]
+    table = table.loc[shared_index]
 
     # save all intermediate files into tmp dir
     with tempfile.TemporaryDirectory() as temp_dir_name:
