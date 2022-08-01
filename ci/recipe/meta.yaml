@@ -1,0 +1,49 @@
+{% set data = load_setup_py_data() %}
+{% set version = data.get('version') or 'placehold' %}
+
+package:
+  name: q2-SCRuB
+  version: {{ version }}
+
+source:
+  path: ../..
+
+build:
+  script: make install
+
+requirements:
+  host:
+    - python {{ python }}
+    - setuptools
+
+  run:
+    - python {{ python }}
+    - biom-format {{ biom_format }}
+    - r-optparse >=1.7.1
+    - r-devtools
+    - Rscript -e "devtools::install_github('biobakery/SparseDOSSA2')"
+    # openjdk is not a real dependency, but, r-base has a post-link and post-
+    # activation hook that calls R CMD javareconf, which pokes around for any
+    # installations of java. On modern versions of macOS, a binary called
+    # `java` is included, but it only launches a GUI installation alert,
+    # indicating to the user that there is no "true" installation of java
+    # present. By including openjdk on osx hosts, this pop-up is prevented at
+    # installation and activation time of the environment.
+    - openjdk # [osx]
+    - qiime2 {{ qiime2_epoch }}.*
+    - q2-types {{ qiime2_epoch }}.*
+
+test:
+  requires:
+    - qiime2 >={{ qiime2 }}
+    - q2-types >={{ q2_types }}
+    - pytest
+
+  imports:
+    - q2_SCRuB
+    - qiime2.plugins.SCRuB
+
+about:
+  home: https://qiime2.org
+  license: BSD-3-Clause
+  license_family: BSD

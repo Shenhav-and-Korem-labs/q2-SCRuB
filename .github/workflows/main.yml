@@ -43,7 +43,9 @@ jobs:
         fetch-depth: 0
 
     - name: set up git repo for versioneer
-      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      run: |
+	git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+	Rscript -e "devtools::install_github('korem-lab/SCRuB')"
 
     - uses: qiime2/action-library-packaging@alpha1
       with:
