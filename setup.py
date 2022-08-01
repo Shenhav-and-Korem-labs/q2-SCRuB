@@ -16,7 +16,7 @@ setup(
     author="George Austin",
     author_email="gia2105@columbia.edu",
     description="Source-tracking for Contamination Removal in microBiomes (SCRuB)",
-#     license="BSD-3-Clause",
+    license="BSD-3-Clause",
     url="https://github.com/korem-lab/SCRuB",
     entry_points={
         'qiime2.plugins': ['q2-SCRuB=q2_SCRuB.plugin_setup:plugin']
