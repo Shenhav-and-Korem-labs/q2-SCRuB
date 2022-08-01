@@ -8,10 +8,15 @@ from qiime2 import Metadata
 from q2_types.feature_table import (FeatureTable,
                                     Frequency,
                                     RelativeFrequency)
-
+import pyreadr
 import ast
 import biom
 from biom import load_table
+
+
+import rpy2.robjects as ro
+from rpy2.robjects import pandas2ri
+from rpy2.robjects.conversion import localconverter
 
 
 def run_commands(cmds, verbose=True):
@@ -19,6 +24,7 @@ def run_commands(cmds, verbose=True):
     This function is a script runner.
     It was obtained from https://github.com/ggloor
     /q2-aldex2/blob/master/q2_aldex2/_method.py
+    also dada2
     """
     if verbose:
         print("Running external command line application(s). This may print "
@@ -99,7 +105,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
             metadata[control_idx_column] = metadata['empo_2'].str.lower().str.contains('negative')
         elif 'qiita_empo_2' in metadata.columns:
             metadata[control_idx_column] = metadata['qiita_empo_2'].str.lower().str.contains('negative')
-        except:
+        else:
             raise(ValueError('No control_idx_column specified, an no empo_2 column is provided to infer which samples are negative controls!'))
     
     
@@ -118,7 +124,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
         pass
     
     scrub_order=[ ','.join([ a.replace(',', '_') for a in control_order ]) if type(control_order) in [list, np.ndarray]
-                 else control_order.replace(',', '_') if type(control_order)==str else
+                 else control_order if type(control_order)==str else
                  'NA'][0]
 
     scrub_meta = scrub_format(scrub_meta,
@@ -137,7 +143,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
         # save the tmp dir locations
         biom_fp = os.path.join(temp_dir_name, 'samples.csv')
         map_fp = os.path.join(temp_dir_name, 'metadata.csv')
-        summary_fp = os.path.join(temp_dir_name, 'scrubbed.csv')
+        summary_fp = os.path.join(temp_dir_name, 'scrubbed.Rdata')
 
         # Need to manually specify header=True for Series (i.e. "meta"). It's
         # already the default for DataFrames (i.e. "table"), but we manually
@@ -162,6 +168,17 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
                             " and stderr to learn more." % e.returncode)
 
         # if run was sucessful import the data and return
-        scrubbed = pd.read_csv(summary_fp, index_col=0)
+#         scrubbed = pd.read_csv(summary_fp, index_col=0)
+        
+        ro.r.load(summary_fp)
+        decont=ro.r['scr_out'][0]
+        with localconverter(ro.default_converter + pandas2ri.converter):
+            decontaminated_samples = pd.DataFrame(ro.conversion.rpy2py(decont), 
+                                                  index= list(decont.rownames),
+                                                  columns=list(decont.colnames)
+                                                  )
 
-        return scrubbed
+        out_metadata=metadata.loc[decontaminated_samples.index]
+        out_metadata['p'] = list( ro.r['scr_out'][1] )
+        
+        return decontaminated_samples#, out_metadata

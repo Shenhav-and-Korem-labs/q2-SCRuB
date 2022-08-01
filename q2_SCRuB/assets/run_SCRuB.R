@@ -77,7 +77,8 @@ scr_out <- SCRuB(samples, metadata, control_order)
 ### WRITE OUTPUT AND QUIT ###
 # Formatting as csv plain-text sequence table
 cat("3) Write output\n")
-write.csv(scr_out$decontaminated_samples, out.path)
+# write.csv(scr_out$decontaminated_samples, out.path)
+save(scr_out, file=paste0(out.path))
 q(status=0)
 
 

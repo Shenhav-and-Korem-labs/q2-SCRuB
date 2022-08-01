@@ -66,10 +66,14 @@ plugin.methods.register_function(
               #Metadata,
            },
     parameters=PARAMETERS,
-    outputs=[('scrubbed', FeatureTable[Frequency])],
+    outputs=[('scrubbed', FeatureTable[Frequency])#, 
+#              ('metadata', Metadata)
+            ],
     input_descriptions=INPUTDESC, #{'table': DESC_TBL},
     parameter_descriptions=PARAMETERDESC,
-    output_descriptions={'scrubbed': DESC_MP},
+    output_descriptions={'scrubbed': DESC_MP, 
+#                          'metdata': 'Sample metdata, including fitted parameters from SCRuB'
+                         },
     name='microbial decontamination',
     description=('SCRuB is a tool designed to help researchers address the common issue of contamination in microbial studies. This package provides an easy to use framework to apply SCRuB to your projects. All you need to get started are n samples x m taxa count matrices for both your samples and controls.'),
 )
