@@ -33,7 +33,7 @@ jobs:
 
       - name: Install auxillary CI packages
         shell: bash -l {0}
-        run: conda install -c conda-forge coveralls flake8 nose
+        run: conda install -c conda-forge -c bioconda coveralls flake8 nose r-devtools
       
       - name: Install R-SCRuB
         shell: bash -l {0}
