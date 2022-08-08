@@ -18,7 +18,8 @@ setup(
     description="Source-tracking for Contamination Removal in microBiomes (SCRuB)",
     license="BSD-3-Clause",
     url="https://github.com/korem-lab/SCRuB",
-    install_requires=['pyreadr'],
+    install_requires=['pyreadr',
+                      'rpy2'],
     entry_points={
         'qiime2.plugins': ['q2-SCRuB=q2_SCRuB.plugin_setup:plugin']
     },
