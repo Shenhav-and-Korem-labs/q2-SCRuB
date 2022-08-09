@@ -37,7 +37,7 @@ jobs:
       
       - name: Install R-SCRuB
         shell: bash -l {0}
-        run: Rscript -e 'install.packages("cli"); devtools::install_github("korem-lab/SCRuB"); torch::install_torch()'
+        run: Rscript -e 'install.packages("cli", repos = "http://cran.us.r-project.org"); devtools::install_github("korem-lab/SCRuB"); torch::install_torch()'
 
       - name: Install q2-SCRuB
         shell: bash -l {0}
