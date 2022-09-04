@@ -62,10 +62,10 @@ for(fn in c(out.path)) {
 }
 
 ## LOAD LIBRARIES ###
-suppressMessages({library(SCRuB)}, quitely=TRUE)
-suppressMessages({library(stringr)}, quitely=TRUE)
-suppressMessages({library(dplyr)}, quitely=TRUE)
-suppressMessages({library(rlang)}, quitely=TRUE)
+suppressMessages({library(SCRuB, quietly=TRUE)})
+suppressMessages({library(stringr, quietly=TRUE)})
+suppressMessages({library(dplyr, quietly=TRUE)})
+suppressMessages({library(rlang, quietly=TRUE)})
 cat("SCRuB:", as.character(packageVersion("SCRuB")), "\n")
 cat("1) Loading datas\n")
   samples <- read.csv(inp.samps, row.names=1) %>% as.matrix()
