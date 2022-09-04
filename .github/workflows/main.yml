@@ -37,11 +37,11 @@ jobs:
 
       - name: Install auxillary CI packages
         shell: bash -l {0}
-        run: conda install -c conda-forge -c bioconda coveralls flake8 nose r-devtools
+        run: conda install -c conda-forge -c bioconda -c r coveralls flake8 nose r-devtools r-tidyverse
       
       - name: Install R-SCRuB
         shell: bash -l {0}
-        run: Rscript -e 'install.packages(c("cli","pkgload","ellipsis","vctrs"), repos = "http://cran.us.r-project.org"); devtools::install_github("korem-lab/SCRuB"); torch::install_torch()'
+        run: Rscript -e 'devtools::install_github("korem-lab/SCRuB"); torch::install_torch()'
 
       - name: Install q2-SCRuB
         shell: bash -l {0}
