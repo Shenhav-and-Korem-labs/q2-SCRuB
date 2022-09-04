@@ -47,9 +47,9 @@ jobs:
         shell: bash -l {0}
         run: pip install -e .
 
-      - name: Check style
-        shell: bash -l {0}
-        run: flake8 q2_SCRuB/*.py q2_SCRuB/tests/*.py setup.py
+#       - name: Check style
+#         shell: bash -l {0}
+#         run: flake8 q2_SCRuB/*.py q2_SCRuB/tests/*.py setup.py
 
       - name: Run tests & coverage
         shell: bash -l {0}
