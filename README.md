@@ -1,7 +1,7 @@
 # q2-SCRuB
 
  <!-- badges: start -->
-  [![R-CMD-check](https://github.com/korem-lab/SCRuB/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/korem-lab/SCRuB/actions/workflows/check-standard.yaml)
+  [![R-CMD-check](https://github.com/korem-lab/Shenhav-and-Korem-labs/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/korem-lab/SCRuB/actions/workflows/check-standard.yaml)
   [![Codecov test
 coverage](https://codecov.io/gh/korem-lab/SCRuB/graph/badge.svg)](https://app.codecov.io/gh/korem-lab/SCRuB)
   <!-- badges: end -->
