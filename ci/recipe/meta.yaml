@@ -21,7 +21,7 @@ requirements:
     - biom-format {{ biom_format }}
     - r-optparse >=1.7.1
     - r-devtools
-    - Rscript -e "devtools::install_github('biobakery/SparseDOSSA2')"
+    - Rscript -e "devtools::install_github('Shenhav-and-Korem-labs/SCRuB')"
     # openjdk is not a real dependency, but, r-base has a post-link and post-
     # activation hook that calls R CMD javareconf, which pokes around for any
     # installations of java. On modern versions of macOS, a binary called

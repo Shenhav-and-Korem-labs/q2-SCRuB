@@ -113,7 +113,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
     if not all([col_ in metadata.columns for col_ in cols]):
         raise ValueError('Not all columns given are present in the'
                          ' sample metadata file. Please check that'
-                         ' the input columns are in the given metdata.')
+                         ' the input columns are in the given metadata.')
 
     # keep only those columns
     scrub_meta = metadata.dropna(subset=cols).loc[:, cols]
