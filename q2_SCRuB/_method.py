@@ -47,7 +47,7 @@ def scrub_format(meta: pd.DataFrame,
     Helper function to format metadata for SCRuB.
     """
     cols=[control_idx_column, sample_type_column] 
-    if type(well_location_column)==str:
+    if type(well_location_column)==str and well_location_column!='None':
         cols+= [well_location_column]
     
     return( meta[cols] )
@@ -57,7 +57,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
           metadata: DataFrame,# Metadata,
           control_idx_column: str = None,
           sample_type_column: str = 'sample_type',
-          well_location_column: str= 'well_id',
+          well_location_column: str= 'None',
           control_order: list= 'NA' ) -> pd.DataFrame:
 
     # read from table csvs if paths are provided
@@ -71,7 +71,7 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
     
     print('Running SCRuB on Qiime2!')
     cols=[control_idx_column, sample_type_column] 
-    if type(well_location_column)==str:
+    if type(well_location_column)==str and well_location_column!='None':
         cols+= [well_location_column]
 
     # import and check all columns given are in dataframe
@@ -97,7 +97,6 @@ def SCRuB(table: biom.Table, #pd.DataFrame,
     metadata.index = metadata.index.astype(str)
     metadata.index = [ind.replace('_', '-')
                       for ind in metadata.index]
-    
         
     if control_idx_column is None:
         control_idx_column='is_negative_control'
