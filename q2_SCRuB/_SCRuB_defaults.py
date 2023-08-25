@@ -2,7 +2,7 @@
 # descriptions.
 
 DEFAULT_ORDER = 'NA'
-DEFAULT_WELL_COL = 'sample_well'
+DEFAULT_WELL_COL = None
 DEFAULT_SAMPLE_COL = 'sample_type'
 DEFAULT_CONTROL_COL = 'is_control'
 
