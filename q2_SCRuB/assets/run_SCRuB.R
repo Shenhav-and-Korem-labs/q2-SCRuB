@@ -68,8 +68,8 @@ suppressMessages({library(dplyr, quietly=TRUE)})
 suppressMessages({library(rlang, quietly=TRUE)})
 cat("SCRuB:", as.character(packageVersion("SCRuB")), "\n")
 cat("1) Loading datas\n")
-  samples <- read.csv(inp.samps, row.names=1) %>% as.matrix()
-  metadata <- read.csv(inp.metadata, row.names=1)
+  samples <- read.csv(inp.samps, row.names=1, check.names=FALSE) %>% as.matrix()
+  metadata <- read.csv(inp.metadata, row.names=1, check.names=FALSE)
   control_order <- str_split(cont_order, ',')[[1]]
 ### DECONTAMINATE ###
 cat("2) Decontaminating \n")
